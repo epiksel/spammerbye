@@ -10,13 +10,11 @@ if (is_file('library/utf8.php')) {
 }
 
 if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
-	$ref_url = getRefUrl($_SERVER['HTTP_REFERER']);
+	$refurl = getRefUrl($_SERVER['HTTP_REFERER']);
 		
 	foreach (getBlacklist() as $spammer) {
-		$spammer_url = getRefUrl($spammer);
-
-		if ($ref_url == $spammer_url) {
-			$spammerBye = 'Location: ' . $spammer;
+		if ($refurl == $spammer) {
+			$spammerBye = 'Location: http://' . $spammer;
 			header($spammerBye);
 
 			exit();
@@ -36,7 +34,7 @@ function getBlacklist() {
 	$spammers = file($blacklist, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 	foreach ($spammers as $spammer) {
-		$blacklist_data[] = utf8_strtolower(trim($spammer));
+		$blacklist_data[] = utf8_strtolower(getRefUrl(trim($spammer)));
 	}
 
 	return $blacklist_data;
@@ -60,6 +58,10 @@ function getRefUrl($url) {
 	// You might also want to limit the length if screen space is limited
 	if (utf8_strlen($hostname) > 50) {
 		$hostname = utf8_substr($hostname, 0, 47) . '...';
+	}
+
+	if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $hostname, $result)) {
+		return $result['domain'];
 	}
 
 	return utf8_strtolower($hostname);
