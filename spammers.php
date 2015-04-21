@@ -1,7 +1,7 @@
 <?php
 // Developer : Ekrem KAYA
 // Website   : http://e-piksel.com
-// Extension : http://weblenti.com/opencart-spam-referrer-blocker-s1-p83
+// Extension : http://weblenti.com/opencart-spam-referrer-blocker-s1-p82
 // GitHub    : https://github.com/e-piksel/spam-referrer-blocker
 
 // UTF8 Library
