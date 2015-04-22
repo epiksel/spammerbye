@@ -3,21 +3,32 @@
 // Website   : http://e-piksel.com
 // Extension : http://weblenti.com/opencart-spammerbye-spam-referrer-blocker-s1-p82
 // GitHub    : https://github.com/e-piksel/spammerbye
+// Version   : 1.0.0
 
 // UTF8 Library
 if (is_file('library/utf8.php')) {
 	require_once('library/utf8.php');
 }
 
+// HTTP
+define('HTTP_SERVER', 'http://your-http-website-addres');
+
+// HTTPS - If you are not using, enter http address
+define('HTTPS_SERVER', 'https://your-https-website-addres');
+
 if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
 	$refurl = getRefUrl($_SERVER['HTTP_REFERER']);
-		
-	foreach (getBlacklist() as $spammer) {
-		if ($refurl == $spammer) {
-			$spammerBye = 'Location: http://' . $spammer;
-			header($spammerBye);
+	
+	$status = ($refurl == getRefUrl(HTTP_SERVER) || $refurl == getRefUrl(HTTPS_SERVER)) ? false : true;
 
-			exit();
+	if ($status) {
+		foreach (getBlacklist() as $spammer) {
+			if ($refurl == $spammer) {
+				$spammerBye = 'Location: http://' . $spammer;
+				header($spammerBye);
+
+				exit();
+			}
 		}
 	}
 }
@@ -60,6 +71,7 @@ function getRefUrl($url) {
 		$hostname = utf8_substr($hostname, 0, 47) . '...';
 	}
 
+	// Cleaner subdomain name
 	if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $hostname, $result)) {
 		return $result['domain'];
 	}
