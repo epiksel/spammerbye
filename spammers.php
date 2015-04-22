@@ -1,8 +1,8 @@
 <?php
 // Developer : Ekrem KAYA
 // Website   : http://e-piksel.com
-// Extension : http://weblenti.com/opencart-spam-referrer-blocker-s1-p82
-// GitHub    : https://github.com/e-piksel/spam-referrer-blocker
+// Extension : http://weblenti.com/opencart-spammerbye-spam-referrer-blocker-s1-p82
+// GitHub    : https://github.com/e-piksel/spammerbye
 
 // UTF8 Library
 if (is_file('library/utf8.php')) {
@@ -28,7 +28,7 @@ function getBlacklist() {
 	if (is_file('blacklist.txt')) {
 		$blacklist = 'blacklist.txt';
 	} else {
-		$blacklist = 'https://raw.githubusercontent.com/e-piksel/spam-referrer-blocker/master/blacklist.txt';
+		$blacklist = 'https://raw.githubusercontent.com/e-piksel/spammerbye/master/blacklist.txt';
 	}
 
 	$spammers = file($blacklist, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
