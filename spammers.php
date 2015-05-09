@@ -2,7 +2,7 @@
 // Developer : Ekrem KAYA
 // Website   : http://e-piksel.com
 // Extension : http://weblenti.com/opencart-spammerbye-spam-referrer-blocker-s1-p82
-// GitHub    : https://github.com/e-piksel/spammerbye
+// GitHub    : https://github.com/epiksel/spammerbye
 // Version   : 1.0.0
 
 // UTF8 Library
