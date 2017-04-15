@@ -3,7 +3,7 @@
 // Website   : http://e-piksel.com
 // Extension : http://weblenti.com/opencart-spammerbye-spam-referrer-blocker-s1-p82
 // GitHub    : https://github.com/epiksel/spammerbye
-// Version   : 1.0.0
+// Version   : 1.1.0
 
 // UTF8 Library
 if (is_file('library/utf8.php')) {
