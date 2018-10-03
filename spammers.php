@@ -1,7 +1,6 @@
 <?php
 // Developer : Ekrem KAYA
-// Website   : http://e-piksel.com
-// Extension : http://weblenti.com/opencart-spammerbye-spam-referrer-blocker-s1-p82
+// Website   : https://e-piksel.com
 // GitHub    : https://github.com/epiksel/spammerbye
 // Version   : 1.1.0
 
@@ -18,7 +17,7 @@ define('HTTPS_SERVER', 'https://your-https-website-addres');
 
 if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
 	$refurl = getRefUrl($_SERVER['HTTP_REFERER']);
-	
+
 	$status = ($refurl == getRefUrl(HTTP_SERVER) || $refurl == getRefUrl(HTTPS_SERVER)) ? false : true;
 
 	if ($status) {
